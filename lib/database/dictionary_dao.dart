@@ -12,4 +12,8 @@ class DictionaryDao extends DatabaseAccessor<DictionaryDatabase>
   Future<List<DictionaryTableData>> getAllWord() async {
     return await select(dictionaryTable).get();
   }
+
+  Future<List<DictionaryTableData>> searchWord(String words)async {
+    return await (select(dictionaryTable)..where((tbl) => tbl.eng.like('$words%'))).get();
+  }
 }
