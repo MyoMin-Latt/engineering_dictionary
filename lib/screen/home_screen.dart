@@ -1,6 +1,7 @@
 import 'package:a17_eng_dictionary/database/dictionary_dao.dart';
 import 'package:a17_eng_dictionary/database/dictionary_database.dart';
 import 'package:a17_eng_dictionary/database/dictionary_table.dart';
+import 'package:a17_eng_dictionary/screen/detail.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -46,7 +47,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(12.0),
-                            child: Text(snapshot.data![index].eng),
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) {
+                                      return Detail_screen(
+                                          data: snapshot.data![index]);
+                                    }),
+                                  );
+                                },
+                                child: Text(snapshot.data![index].eng)),
                           );
                         });
                   } else if (snapshot.hasError) {

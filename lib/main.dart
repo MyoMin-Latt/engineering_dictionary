@@ -6,6 +6,8 @@
 // @17.6 Dictionary Dao
 // @17.7 Connect Dictionary Database
 // @17.9 Dictionary search UI
+// @17.10 Dictionary Detail Screen
+
 
 
 import 'package:a17_eng_dictionary/database/dictionary_database.dart';
