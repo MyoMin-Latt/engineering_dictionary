@@ -8,6 +8,9 @@
 // @17.9 Dictionary search UI
 // @17.10 Dictionary Detail Screen
 
+// Q
+// TableCampanion, tableData
+
 
 
 import 'package:a17_eng_dictionary/database/dictionary_database.dart';

@@ -1,7 +1,6 @@
-import 'package:a17_eng_dictionary/database/dictionary_dao.dart';
 import 'package:a17_eng_dictionary/database/dictionary_database.dart';
-import 'package:a17_eng_dictionary/database/dictionary_table.dart';
 import 'package:a17_eng_dictionary/screen/detail.dart';
+import 'package:a17_eng_dictionary/screen/favourite.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +19,19 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Engineering Dictionary"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: ((context) {
+                return FavouriteScreen();
+              }),
+            ),
+          );
+        },
+        child: Icon(Icons.favorite),
       ),
       body: Column(
         children: [
@@ -53,7 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     context,
                                     MaterialPageRoute(builder: (context) {
                                       return Detail_screen(
-                                          data: snapshot.data![index]);
+                                        data: snapshot.data![index],
+                                        database: database,
+                                      );
                                     }),
                                   );
                                 },

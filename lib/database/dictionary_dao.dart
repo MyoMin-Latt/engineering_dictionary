@@ -16,4 +16,21 @@ class DictionaryDao extends DatabaseAccessor<DictionaryDatabase>
   Future<List<DictionaryTableData>> searchWord(String words)async {
     return await (select(dictionaryTable)..where((tbl) => tbl.eng.like('$words%'))).get();
   }
+
+  Future<bool> updateWord(DictionaryTableCompanion data)async {
+    return await update(dictionaryTable).replace(data);
+  }
+
+  Future<List<DictionaryTableData>> favouriteWord()async{
+    return await (select(dictionaryTable)..where((tbl) => tbl.favourite.isNotNull())).get();
+  }
+
+  Stream<DictionaryTableData> watchData(int id){
+    return (select(dictionaryTable)..where((tbl) => tbl.id.equals(id))).watchSingle();
+  }
+
+  Future<List<DictionaryTableData>> getAllFavourite()async{
+    return await (select(dictionaryTable)..where((tbl) => tbl.favourite.equals(true))).get();
+  }
+
 }
